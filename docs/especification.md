@@ -44,35 +44,36 @@ Apresente aqui as histórias de usuário que são relevantes para o projeto de s
 
 As tabelas que se seguem apresentam os requisitos funcionais e não funcionais que detalham o escopo do projeto.
 
-### Requisitos Funcionais
+### Requisitos Funcionais (RF)
+ Requisitos funcionais são os requisitos que falam **o que o sistema deve fazer**. Descreve as funcionalidades, comportamentos e interações do sistema com o usuário. Tabela de requisitos funcionais para o Gerenciador de Tarefas:
 
 |ID    | Descrição do Requisito  | Prioridade | 
-|------|-----------------------------------------|----| 
-|RF-001| A aplicação deve permitir que o usuário gerencie suas tarefas | ALTA |  
-|RF-002| A aplicação deve permitir a emissão de um relatório de tarefas realizadas no mês   | MÉDIA | 
+|------|-----------------------------------------|----|  
+| RF-001 |	O usuário poderá adicionar tarefas a serem cumpridas	| Alta |
+| RF-002 |	As tarefas poderão ter título, descrição, data e hora |	Alta |
+| RF-003 |	O usuário poderá mudar o status da tarefa usando um checkbox, assim transferindo a tarefa de “Pendente” para “Concluída” |	Alta |
+| RF-004 |	O usuário poderá editar e excluir uma tarefa depois de adicionada | Alta |
+| RF-005 |	O sistema deverá ter os seguintes menus: Tarefas, Arquivo, Lixeira	| Alta |
+| RF-006 |	O usuário poderá definir a prioridade das tarefas | Média |
+| RF-007 |	O usuário poderá criar etiquetas para organizar suas tarefas | Média |
+| RF-008 |	O sistema deverá contar com filtros para buscar tarefas de diferentes formas | Média |
+| RF-009 |	O sistema deverá contar com ordenamento de tarefas	| Média |
+| RF-010 |	O sistema deverá ter um sistema de “Lembretes”, que irá avisar o usuário sobre o momento de fazer a tarefa |	Baixa |
+| RF-011 |	O sistema deverá contar com um calendário para o usuário navegar e adicionar tarefas | Baixa |
 
 
-### Requisitos não Funcionais
+### Requisitos não Funcionais (RNF)
+ Definem **como** o sistema deve operar, **suas qualidades, restrições e características técnicas**. Eles descrevem aspectos como desempenho, segurança, usabilidade, escalabilidade e compatibilidade. Tabela de requisitos não funcionais para o Gerenciador de Tarefas:
 
 |ID     | Descrição do Requisito  |Prioridade |
 |-------|-------------------------|----|
-|RNF-001| A aplicação deve ser responsiva | MÉDIA | 
-|RNF-002| A aplicação deve processar requisições do usuário em no máximo 3s |  BAIXA | 
-
-Com base nas Histórias de Usuário, enumere os requisitos da sua solução. Classifique esses requisitos em dois grupos:
-
-- [Requisitos Funcionais
- (RF)](https://pt.wikipedia.org/wiki/Requisito_funcional):
- correspondem a uma funcionalidade que deve estar presente na
-  plataforma (ex: cadastro de usuário).
-- [Requisitos Não Funcionais
-  (RNF)](https://pt.wikipedia.org/wiki/Requisito_n%C3%A3o_funcional):
-  correspondem a uma característica técnica, seja de usabilidade,
-  desempenho, confiabilidade, segurança ou outro (ex: suporte a
-  dispositivos iOS e Android).
-Lembre-se que cada requisito deve corresponder à uma e somente uma
-característica alvo da sua solução. Além disso, certifique-se de que
-todos os aspectos capturados nas Histórias de Usuário foram cobertos.
+| RNF-001 |	O sistema deve carregar a página em menos de 3 segundos	| Alta |
+| RNF-002	| Adicionar, editar ou excluir tarefas deve ter tempo inferior a 2 segundos	| Alta |
+| RNF-003	| O sistema deve funcionar em todos os navegadores	| Alta |
+| RNF-004	| O sistema deve estar disponível 24 horas por dia, 7 dias por semana	| Alta |
+| RNF-005	| O sistema deve salvar automaticamente o que o usuário fizer durante a utilização do sistema	| Média |
+| RNF-006	| O sistema deve ser responsivo e se adaptar a todos os tamanhos e telas	| Média |
+| RNF-007	| O sistema deve ter uma interface intuitiva.		| Baixa |
 
 ## Restrições
 
