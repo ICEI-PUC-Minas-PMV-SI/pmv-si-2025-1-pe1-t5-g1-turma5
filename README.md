@@ -6,7 +6,7 @@
 
 `SEMESTRE: 1º`
 
-Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo desenvolvido.
+Projeto que se propõe a disponibilizar ao usuário uma ferramenta para listar os afazeres do dia-a-dia, oferecendo funcionalidades auxiliares como listagem, ordenação, lembretes, etiquetas, calendário, filtros, entre outros.
 
 ## Integrantes
 
@@ -15,8 +15,6 @@ Descrever resumidamente, em um ou dois parágrafos, o projeto que está sendo de
 * Guilherme Henrique Santos Arantes 
 * Gustavo Henrique Pontes dos Santos
 * Henrique Augusto Freire de Oliveira
-* Mateus Macedo Capodeferro
-
 
 
 ## Orientador
