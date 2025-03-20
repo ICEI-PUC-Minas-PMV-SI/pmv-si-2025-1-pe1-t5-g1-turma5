@@ -44,10 +44,10 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 
 |ID     | Descrição do Requisito  | Prioridade |
 |-------|-------------------------|----|
-| RNF-001 |	O sistema deve carregar a página em menos de 3 segundos	| Alta |
-| RNF-002	| O sistema deve adicionar, editar ou excluir tarefas em menos de 2 segundos	| Alta |
+| RNF-001 |	O sistema deve carregar a página em menos de 3 segundos	| Média |
+| RNF-002	| O sistema deve adicionar, editar ou excluir tarefas em menos de 2 segundos	| Média |
 | RNF-003	| O sistema deve funcionar em todos os navegadores	| Alta |
-| RNF-004	| O sistema deve estar disponível 24 horas por dia, 7 dias por semana	| Alta |
+| RNF-004	| O sistema deve estar disponível 24 horas por dia, 7 dias por semana	| Baixa |
 | RNF-005	| O sistema deve salvar automaticamente o que o usuário fizer durante a utilização do sistema	| Alta |
 | RNF-006	| O sistema deve ser responsivo e se adaptar a todos os tamanhos e telas	| Média |
 | RNF-007	| O sistema deve ter uma interface intuitiva.		| Alta |
