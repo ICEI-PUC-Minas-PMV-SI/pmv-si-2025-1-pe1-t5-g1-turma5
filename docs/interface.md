@@ -17,13 +17,11 @@ Fluxo de usuário (User Flow) é uma técnica que permite ao desenvolvedor mapea
 > - [Top 25 User Flow Tools & Templates for Smooth](https://www.mockplus.com/blog/post/user-flow-tools)
 
 
-## Wireframes
+## Wireframes Commit+
 
-São protótipos usados em design de interface para sugerir a estrutura de um site web e seu relacionamentos entre suas páginas. Um wireframe web é uma ilustração semelhante do layout de elementos fundamentais na interface e é fundamental sempre relacionar cada wireframe com o(s) requisito(s) que ele atende.
+O wireframe seguinte é um protótipo não muito fiel ao projeto, mas mostra os itens que aparecerão após o usuário fazer o login no gerenciador de tarefas. O cabeçalho apresenta um local fixo reservado para a cor a ser definido e também onde ficará a logo. O conteúdo mudará conforme requisitado pelo usuário ao navegar nas opções. A barra lateral conta com os ícones que direcionarão para cada tela após serem clicados, assim mudando o conteúdo da página.
 
 ### Exemplo
-
-A tela inicial apresenta um menu lateral com as principais seções do portal, enquanto a navigation bar, ao topo, apresenta informações de envio de imagens ou navegação pela galeria de fotos. A área central apresenta a galeria de fotos na forma de uma grade. Nesta tela, são apresentados os seguintes requisitos
 
 ![Image](https://github.com/user-attachments/assets/41e049c1-b133-42bf-b11d-5f7a1c6a9727)
 
