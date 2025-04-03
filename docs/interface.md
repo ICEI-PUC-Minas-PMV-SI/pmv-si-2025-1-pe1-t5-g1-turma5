@@ -25,7 +25,7 @@ São protótipos usados em design de interface para sugerir a estrutura de um si
 
 A tela inicial apresenta um menu lateral com as principais seções do portal, enquanto a navigation bar, ao topo, apresenta informações de envio de imagens ou navegação pela galeria de fotos. A área central apresenta a galeria de fotos na forma de uma grade. Nesta tela, são apresentados os seguintes requisitos
 
-![Exemplo de Wireframe](img/wireframe-example.png)
+![Image](https://github.com/user-attachments/assets/41e049c1-b133-42bf-b11d-5f7a1c6a9727)
 
  
 > **Links Úteis**:
