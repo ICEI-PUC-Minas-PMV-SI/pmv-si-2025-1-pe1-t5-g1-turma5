@@ -19,7 +19,7 @@ Fluxo de usuário (User Flow) é uma técnica que permite ao desenvolvedor mapea
 
 ## Wireframes Commit+
 
-O wireframe seguinte é um protótipo não muito fiel ao projeto, mas mostra os itens que aparecerão após o usuário fazer o login no gerenciador de tarefas. O cabeçalho apresenta um local fixo reservado para a cor a ser definido e também onde ficará a logo. O conteúdo mudará conforme requisitado pelo usuário ao navegar nas opções. A barra lateral conta com os ícones que direcionarão para cada tela após serem clicados, assim mudando o conteúdo da página.
+O wireframe seguinte é um protótipo não muito fiel ao projeto, porém mostra os itens que aparecerão após o usuário fazer o login no gerenciador de tarefas. O cabeçalho apresenta um local fixo reservado para a cor a ser definida e também onde ficará a logo. O conteúdo mudará conforme requisitado pelo usuário ao navegar pelas opções. A barra lateral conta com os ícones que direcionarão para cada tela após serem clicados, assim mudando o conteúdo da página.
 
 ### Exemplo
 
