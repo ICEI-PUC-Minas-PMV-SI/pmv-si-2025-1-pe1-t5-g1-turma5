@@ -6,7 +6,8 @@ Explique as guias de estilo utilizadas no seu projeto.
 
 ## Design
 
-Detalhe os layouts que serão utilizados. Apresente onde será colocado o logo do sistema. Defina os menus padrões, entre outras coisas.
+Tela de login: <br>
+<img src="img/login.png">
 
 
 ## Cores
