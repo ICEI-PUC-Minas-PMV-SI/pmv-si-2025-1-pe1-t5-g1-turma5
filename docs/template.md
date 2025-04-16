@@ -24,3 +24,6 @@ Usaremos a fonte Roboto:
 Usaremos os ícones do Google Fonts:
 <br><br>
 <img src="img/icones.png">
+
+### Logo
+<img src="img/Logo.png">
