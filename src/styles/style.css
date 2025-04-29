@@ -1,0 +1,49 @@
+body{
+    font-family: 'Roboto', serif;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    font-size: 1.25vw;
+}
+header{
+    background-color: #227852;
+    box-shadow: 0px 1px 4px black;
+    margin-bottom: 2%;
+}
+#logo {
+    width: 17%;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+}
+#conteudo{
+    display: flex;
+}
+.vl {
+    border-left: 2px solid #227852;
+    margin-right: 3%;
+}
+.item-barra {
+    margin-top: 5%;
+}
+sidebar{
+    margin-left: 1%;
+    width: 11%;
+}
+.material-symbols-outlined {
+    font-size: 2vw;
+}
+a {
+    text-decoration: none;
+    color: black
+}
+@media screen and (min-height:600px){
+    sidebar{
+        min-height: 700px;
+    }
+}
+@media screen and (min-height:963px){
+    sidebar{
+        min-height: 800px;
+    }
+}
+
