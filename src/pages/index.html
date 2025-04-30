@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=calendar_month,delete,home_storage" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=calendar_month,delete,format_list_bulleted,home_storage" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="../styles/style.css">
     <title>Tarefas</title>
@@ -13,13 +13,19 @@
         <img src="../../docs/img/Logo.png" id="logo">
     </header>
     <div id="conteudo">
-        <sidebar>
+        <sidebar id="barraLateral">
+            <a href="">
+                <div class="item-barra">
+                    <span class="material-symbols-outlined">
+                        format_list_bulleted
+                    </span> Tarefas
+                </div>
+            </a>
             <a href="">
                 <div class="item-barra">
                     <span class="material-symbols-outlined">
                         calendar_month
-                    </span> 
-                    <span class="textoIcone">Calendário</span>
+                    </span> Calendário
                 </div>
             </a>
             <a href="">
@@ -38,7 +44,58 @@
             </a>
         </sidebar>
         <div class="vl"></div>
-        <main>A</main>
+        <main id="principal">
+            <div id="barraBotoes">
+                <button id="btnAdd" class="btn" onClick="alert('a')">Adicionar</button>
+                <input id="pesquisa" placeholder="Buscar">
+                <button id="btnFiltros" class="btn">Filtros</button>
+            </div>
+            <div>
+                <div id="cabecalhoTarefas">
+                    <div>Nome</div>
+                    <div>Data Add.</div>
+                    <div>Tipo</div>
+                    <div>Data Venc.</div>
+                </div>
+                <div class="tarefa">
+                    <div class="round">
+                        <input type="checkbox" checked id="checkbox" />
+                        <label for="checkbox"></label>
+                    </div>
+                    <div class="textoTarefa">
+                        <div>Tarefa 1</div>
+                        <div>08/04/2025</div>
+                        <div>Estudo</div>
+                        <div>20/04/2025</div>
+                    </div>
+                </div>
+                <div class="tarefa">
+                    <div class="round">
+                        <input type="checkbox" checked id="checkbox2" />
+                        <label for="checkbox2"></label>
+                    </div>
+                    <div class="textoTarefa">
+                        <div>Tarefa 2</div>
+                        <div>08/04/2025</div>
+                        <div>Trabalho</div>
+                        <div>20/04/2025</div>
+                    </div>
+                </div>
+                <div class="tarefa">
+                    <div class="round">
+                        <input type="checkbox" checked id="checkbox3" />
+                        <label for="checkbox3"></label>
+                    </div>
+                    <div class="textoTarefa">
+                        <div>Tarefa 3</div>
+                        <div>08/04/2025</div>
+                        <div>Lazer</div>
+                        <div>20/04/2025</div>
+                    </div>
+                </div>
+
+            </div>
+        </main>
     </div>
 </body>
 </html>
