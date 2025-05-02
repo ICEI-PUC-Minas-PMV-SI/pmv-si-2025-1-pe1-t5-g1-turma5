@@ -5,7 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=calendar_month,delete,format_list_bulleted,home_storage" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-    <link rel="stylesheet" href="../styles/style.css">
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/styleListaTarefas.css">
     <link rel="icon" type="image/x-icon" href="../../docs/img/Icone.png">
     <title>Tarefas</title>
 </head>
@@ -77,8 +78,6 @@
             </a>
         </sidebar>
         <div class="vl"></div>
-        <!--
-        -->
         <main id="principal">
             <div id="barraBotoes">
                 <button id="btnAdd" class="btn">Adicionar</button>
@@ -94,7 +93,7 @@
                 </div>
                 <div class="tarefa">
                     <div class="round">
-                        <input type="checkbox" disabled="disabled" id="checkbox" />
+                        <input type="checkbox" id="checkbox" />
                         <label for="checkbox"></label>
                     </div>
                     <div class="textoTarefa">
@@ -131,5 +130,6 @@
             </div>
         </main>
     </div>
+    <script src="../scripts/ListaTarefas.js"></script>
 </body>
 </html>
