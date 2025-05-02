@@ -6,9 +6,42 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=calendar_month,delete,format_list_bulleted,home_storage" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="../styles/style.css">
+    <link rel="icon" type="image/x-icon" href="../../docs/img/Icone.png">
     <title>Tarefas</title>
 </head>
 <body>
+    <div id="modalCriacao">
+        <div id="corpoModal">
+            <h3>Nova tarefa</h3>
+            <input class="barraInput" id="nomeModal" maxlength="22" placeholder="Nome">
+            <textarea class="barraInput" id="descModal" maxlength="200" placeholder="Descrição"></textarea> 
+            <div id="divTipo">
+                <label>Tipo</label>
+                <select id="selectTipos">
+                    <option value="" disabled selected>Selecione</option>
+                    <option>Estudo</option>
+                    <option>Lazer</option>
+                    <option>Academia</option>
+                    <option>Trabalho</option>
+                    <option>Outro</option>
+                </select>
+            </div>
+            <div id="divDatas">
+                <div>
+                    <label>Data Inicio</label>
+                    <input class="inputData" id="dataAddModal" type="date">
+                </div>
+                <div>
+                    <label>Data Fim</label>
+                    <input class="inputData" id="dataVencModal" type="date">
+                </div>
+            </div>
+            <div id="divBotoes">
+                <button id="btnAddModal" class="btn">Adicionar</button>
+                <button id="btnCancelModal" class="btn">Cancelar</button>
+            </div>
+        </div>
+    </div>
     <header>
         <img src="../../docs/img/Logo.png" id="logo">
     </header>
@@ -44,22 +77,24 @@
             </a>
         </sidebar>
         <div class="vl"></div>
+        <!--
+        -->
         <main id="principal">
             <div id="barraBotoes">
                 <button id="btnAdd" class="btn">Adicionar</button>
-                <input id="pesquisa" placeholder="Buscar">
+                <input class="barraInput" id="pesquisa" placeholder="Buscar">
                 <button id="btnFiltros" class="btn">Filtros</button>
             </div>
             <div>
                 <div id="cabecalhoTarefas">
                     <div>Nome</div>
                     <div>Data Add.</div>
-                    <div>Tipo</div>
+                    <div>Categoria</div>
                     <div>Data Venc.</div>
                 </div>
                 <div class="tarefa">
                     <div class="round">
-                        <input type="checkbox" id="checkbox" />
+                        <input type="checkbox" disabled="disabled" id="checkbox" />
                         <label for="checkbox"></label>
                     </div>
                     <div class="textoTarefa">
