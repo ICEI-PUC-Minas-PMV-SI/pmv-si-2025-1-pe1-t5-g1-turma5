@@ -6,6 +6,23 @@ var barraInput = document.getElementById("pesquisa");
 
 var tarefas = JSON.parse(localStorage.getItem("tarefas"));
 
+var menuInferior = document.getElementById("menuInferior");
+var menuEscondido = document.getElementById("menuEscondido");
+
+var btnMenu = document.getElementById("btnMenu");
+
+btnMenu.addEventListener("click", () => {
+    if (menuInferior.style.height == "100%") {
+        menuInferior.style.height = "8%";
+        menuEscondido.style.display = "none";
+    }
+    else {
+        menuInferior.style.height = "100%";
+        menuEscondido.style.display = "flex";
+    }
+
+})
+
 window.addEventListener("load", () => {
     preencherLista();
 });
@@ -16,26 +33,114 @@ barraInput.addEventListener("input", () => {
 });
 
 btnAbrirFiltros.addEventListener("click", () => {
-    let modalFiltros = `
-    <div id="modal" class="modalFiltros">
-        <div id="corpoModal">
-            <h3>Filtros</h3>
-            <div id="divBotoes">
-                <button id="btnAddFiltro" class="btn">Adicionar</button>
-                <button class="btn btnFechar" id="btnFechar" class="btn">Fechar</button>
-            </div>
-        </div>
-    </div>`;
-
-    abrirModalFiltros(modalFiltros);
+    abrirModalFiltros();
 })
 
 btnAdd.addEventListener("click", () => {
-    let modalAdd = `
+    abrirModalTarefas();
+});
+
+function abrirModalGenerico(id) {
+    let tarefas = JSON.parse(localStorage.getItem("tarefas"));
+    let modal = ``;
+    for(let i = 0; i < tarefas.length; i++) {
+        if(tarefas[i].id == id){
+            modal = `
+                <div id="modal" class="modalCriacao">
+                    <div id="corpoModal">
+                        <h3>Tarefa</h3>
+                        <input readonly class="barraInput" id="nomeModal" maxlength="13" value="${tarefas[i].nome}">
+                        <textarea readonly class="barraInput" id="descModal" maxlength="200">${tarefas[i].desc}</textarea> 
+                        <div id="divTipo">
+                            <label>Tipo</label>
+                            <select disabled id="selectTipos">
+                                <option value="" disabled selected>${tarefas[i].categoria}</option>
+                                <option>Estudo</option>
+                                <option>Lazer</option>
+                                <option>Academia</option>
+                                <option>Trabalho</option>
+                                <option>Outro</option>
+                            </select>
+                        </div>
+                        <div id="divDatas">
+                            <div>
+                                <label>Data Inicio</label>
+                                <input disabled value="${tarefas[i].dataadd}" class="inputData" id="dataAddModal" type="date">
+                            </div>
+                            <div>
+                                <label>Data Fim</label>
+                                <input disabled value="${tarefas[i].datavenc}" class="inputData" id="dataVencModal" type="date">
+                            </div>
+                        </div>
+                        <div id="divBotoes">
+                            <button id="btnEdit" type="submit" class="btn">Editar</button>
+                            <button class="btn btnFechar" id="btnFechar">Fechar</button>
+                        </div>
+                    </div>
+                </div>`;
+        }
+    }
+    let div = document.createElement('div');
+    let header = document.querySelector('header');
+    div.innerHTML = modal;
+    document.body.insertBefore(div, header);
+    btnEdit = document.getElementById("btnEdit");
+    btnEdit.addEventListener("click", () => {
+        editarTarefa(btnEdit, id);
+    });
+    btnFechar = document.getElementById("btnFechar");
+    btnFechar.addEventListener("click", () => {
+        fecharModal();
+    });
+}
+
+function editarTarefa(btnEdit, id){
+    if(document.getElementById("nomeModal").readOnly){
+        document.getElementById("nomeModal").readOnly = false;
+        document.getElementById("descModal").readOnly = false;
+        document.getElementById("selectTipos").disabled = false;
+        document.getElementById("dataAddModal").disabled = false;
+        document.getElementById("dataVencModal").disabled = false;
+        btnEdit.style.backgroundColor = "#156527";
+        btnEdit.innerHTML = "Confirmar";
+    }
+    else{
+        document.getElementById("nomeModal").readOnly = true;
+        document.getElementById("descModal").readOnly = true;
+        document.getElementById("selectTipos").disabled = true;
+        document.getElementById("dataAddModal").disabled = true;
+        document.getElementById("dataVencModal").disabled = true;
+        btnEdit.style.backgroundColor = "#227852";
+        btnEdit.innerHTML = "Editar";
+        let nomeModal = document.getElementById("nomeModal").value;
+        let descModal = document.getElementById("descModal").value;
+        let selectTipos = document.getElementById("selectTipos").value;
+        let dataAddModal = document.getElementById("dataAddModal").value;
+        let dataVencModal = document.getElementById("dataVencModal").value;
+        let tarefas = JSON.parse(localStorage.getItem("tarefas"));
+        for(let i = 0; i < tarefas.length; i++) {
+            if(tarefas[i].id == id){
+                tarefas[i].nome = nomeModal;
+                tarefas[i].desc = descModal;
+                if(selectTipos !== null && selectTipos !== ""){
+                    tarefas[i].categoria = selectTipos;
+                }
+                tarefas[i].dataadd = dataAddModal;
+                tarefas[i].datavenc = dataVencModal;
+                localStorage.setItem("tarefas", JSON.stringify(tarefas));
+                fecharModal()
+                preencherLista();
+            }
+        }
+    }
+}
+
+function abrirModalTarefas() {
+    let modal = `
     <div id="modal" class="modalCriacao">
         <form id="corpoModal">
             <h3>Nova tarefa</h3>
-            <input required class="barraInput" id="nomeModal" maxlength="22" placeholder="Nome">
+            <input required class="barraInput" id="nomeModal" maxlength="13" placeholder="Nome">
             <textarea required class="barraInput" id="descModal" maxlength="200" placeholder="Descrição"></textarea> 
             <div id="divTipo">
                 <label>Tipo</label>
@@ -64,39 +169,35 @@ btnAdd.addEventListener("click", () => {
             </div>
         </form>
     </div>`;
-
-    abrirModalTarefas(modalAdd);
-});
-
-function abrirModalTarefas(modal) {
     let div = document.createElement('div');
     let header = document.querySelector('header');
     div.innerHTML = modal;
     document.body.insertBefore(div, header);
-    inputs = document.querySelectorAll("input[type='checkbox']");
-    for (let i = 0; i < inputs.length; i++) {
-        inputs[i].disabled = "disabled";
-    }
     var corpoModal = document.getElementById('corpoModal');
     corpoModal.addEventListener('submit', (e) => {
         e.preventDefault();
         addTarefa();
-        fecharModal();
     })
     btnFechar = document.getElementById("btnFechar");
     btnFechar.addEventListener("click", () => {
         fecharModal();
     })
 }
-function abrirModalFiltros(modal) {
+function abrirModalFiltros() {
+    let modal = `
+    <div id="modal" class="modalFiltros">
+        <div id="corpoModal">
+            <h3>Filtros</h3>
+            <div id="divBotoes">
+                <button id="btnAddFiltro" class="btn">Adicionar</button>
+                <button class="btn btnFechar" id="btnFechar" class="btn">Fechar</button>
+            </div>
+        </div>
+    </div>`;
     let div = document.createElement('div');
     let header = document.querySelector('header');
     div.innerHTML = modal;
     document.body.insertBefore(div, header);
-    inputs = document.querySelectorAll("input[type='checkbox']");
-    for (let i = 0; i < inputs.length; i++) {
-        inputs[i].disabled = "disabled";
-    }
     btnFechar = document.getElementById("btnFechar");
     btnFechar.addEventListener("click", () => {
         fecharModal();
@@ -105,10 +206,6 @@ function abrirModalFiltros(modal) {
 
 function fecharModal() {
     let modal = document.getElementById("modal");
-    inputs = document.querySelectorAll("input[type='checkbox']");
-    for (let i = 0; i < inputs.length; i++) {
-        inputs[i].disabled = "";
-    }
     modal.remove();
 }
 
@@ -118,47 +215,57 @@ function preencherLista(query) {
     if (tarefas) {
         conteudo = "";
         for (let i = 0; i < tarefas.length; i++) {
-            console.log(query === "" || query == null);
             if (query === "" || query == null) {
                 conteudo += `
                 <div id="${tarefas[i].id}" class="tarefa">
-                    <div class="round">
-                        <input type="checkbox" id="checkbox${tarefas[i].id}" />
-                        <label for="checkbox${tarefas[i].id}"></label>
-                    </div>
+                    <input class="check" type="checkbox"
+                    `;
+                if (tarefas[i].checked) conteudo += ` checked`;
+                conteudo += ` />
                     <div class="textoTarefa">
-                        <div class="nodoTexto">${tarefas[i].nome}</div>
+                        <div class="nodoTexto nome">${tarefas[i].nome}</div>
                         <div class="nodoTexto">${tarefas[i].dataadd.slice(0, 10).split('-').reverse().join('/')}</div>
                         <div class="nodoTexto">${tarefas[i].categoria}</div>
                         <div class="nodoTexto">${tarefas[i].datavenc.slice(0, 10).split('-').reverse().join('/')}</div>
                     </div>
                 </div>
-                `
+                `;
             }
-            else if (tarefas[i].nome.includes(query)) {
+            else if (tarefas[i].nome.toLowerCase().includes(query.toLowerCase())) {
                 conteudo += `
                 <div id="${tarefas[i].id}" class="tarefa">
-                    <div class="round">
-                        <input type="checkbox" id="checkbox${tarefas[i].id}" />
-                        <label for="checkbox${tarefas[i].id}"></label>
-                    </div>
+                    <input class="check" type="checkbox"`;
+                if (tarefas[i].checked) conteudo += ` checked`;
+                conteudo += ` />
                     <div class="textoTarefa">
-                        <div class="nodoTexto">${tarefas[i].nome}</div>
+                        <div class="nodoTexto nome">${tarefas[i].nome}</div>
                         <div class="nodoTexto">${tarefas[i].dataadd.slice(0, 10).split('-').reverse().join('/')}</div>
                         <div class="nodoTexto">${tarefas[i].categoria}</div>
                         <div class="nodoTexto">${tarefas[i].datavenc.slice(0, 10).split('-').reverse().join('/')}</div>
                     </div>
-                </div>
-                `
+                </div >
+                    `;
             }
         }
         if (!(conteudo.length > 0)) {
-            conteudo = `<div id="divVazio"><p id="semTarefas"><strong>Nada encontrado</strong></p></div>`;
+            conteudo = `<div id = "divVazio" > <p id="semTarefas"><strong>Nada encontrado</strong></p></div > `;
         }
         listaHtml.innerHTML = conteudo;
+        var checkboxes = document.querySelectorAll(".check");
+        checkboxes.forEach(box => {
+            box.addEventListener("click", () => {
+                trocarEstado(box.parentNode.id);
+            })
+        })
+        var btnTarefas = document.querySelectorAll(".nome");
+        btnTarefas.forEach(tarefa => {
+            tarefa.addEventListener("click", () => {
+                abrirModalGenerico(tarefa.parentNode.parentNode.id);
+            })
+        })
     }
     else {
-        listaHtml.innerHTML = `<div id="divVazio"><p id="semTarefas"><strong>Não há tarefas registradas</strong></p></div>`;
+        listaHtml.innerHTML = `<div id = "divVazio" > <p id="semTarefas"><strong>Não há tarefas registradas</strong></p></div > `;
     }
 }
 
@@ -171,21 +278,38 @@ function addTarefa() {
 
     const novaTarefa = {
         id: generateUUID(),
+        checked: false,
         nome: nomeModal,
         desc: descModal,
         categoria: selectTipos,
         dataadd: dataAddModal,
         datavenc: dataVencModal
     }
-
-    var tarefas = [];
-    if (JSON.parse(localStorage.getItem("tarefas"))) {
-        tarefas = JSON.parse(localStorage.getItem("tarefas"));
+    if (dataAddModal > dataVencModal) {
+        alert("A data de início não pode ser depois da data de término!");
     }
-    tarefas.push(novaTarefa);
-    localStorage.setItem("tarefas", JSON.stringify(tarefas));
-    preencherLista();
+    else {
+        fecharModal();
+        var tarefas = [];
+        if (JSON.parse(localStorage.getItem("tarefas"))) {
+            tarefas = JSON.parse(localStorage.getItem("tarefas"));
+        }
+        tarefas.push(novaTarefa);
+        localStorage.setItem("tarefas", JSON.stringify(tarefas));
+        preencherLista();
+    }
 }
+
+function trocarEstado(id) {
+    let tarefas = JSON.parse(localStorage.getItem("tarefas"));
+    for (let i = 0; i < tarefas.length; i++) {
+        if (tarefas[i].id == id) {
+            tarefas[i].checked = !tarefas[i].checked;
+        }
+    }
+    localStorage.setItem("tarefas", JSON.stringify(tarefas));
+}
+
 
 // Fonte: https://stackoverflow.com/questions/105034/how-to-create-guid-uuid
 function generateUUID() { // Public Domain/MIT
