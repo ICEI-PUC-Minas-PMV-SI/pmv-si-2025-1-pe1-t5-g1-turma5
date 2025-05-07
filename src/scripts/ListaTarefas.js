@@ -29,12 +29,51 @@ function fecharModal() {
 }
 
 function preencherLista(query) {
+    let filtro = document.getElementById("btnFiltros").innerHTML;
+    if (filtro === "Filtros") {
+        filtro = null;
+    }
     listaHtml.innerHTML = "";
     tarefas = JSON.parse(localStorage.getItem("tarefas"));
     if (tarefas) {
         conteudo = "";
         for (let i = 0; i < tarefas.length; i++) {
-            if (query === "" || query == null) {
+            if (filtro) {
+                if (tarefas[i].categoria === filtro) {
+                    if (query === "" || query == null) {
+                        conteudo += `
+                        <div id="${tarefas[i].id}" class="tarefa">
+                            <input class="check" type="checkbox"
+                            `;
+                        if (tarefas[i].checked) conteudo += ` checked`;
+                        conteudo += ` />
+                            <div class="textoTarefa">
+                                <div class="nodoTexto nome">${tarefas[i].nome}</div>
+                                <div class="nodoTexto">${tarefas[i].dataadd.slice(0, 10).split('-').reverse().join('/')}</div>
+                                <div class="nodoTexto">${tarefas[i].categoria}</div>
+                                <div class="nodoTexto">${tarefas[i].datavenc.slice(0, 10).split('-').reverse().join('/')}</div>
+                            </div>
+                        </div>
+                        `;
+                    }
+                    else if (tarefas[i].nome.toLowerCase().includes(query.toLowerCase()) || tarefas[i].desc.toLowerCase().includes(query.toLowerCase())) {
+                        conteudo += `
+                        <div id="${tarefas[i].id}" class="tarefa">
+                            <input class="check" type="checkbox"`;
+                        if (tarefas[i].checked) conteudo += ` checked`;
+                        conteudo += ` />
+                            <div class="textoTarefa">
+                                <div class="nodoTexto nome">${tarefas[i].nome}</div>
+                                <div class="nodoTexto">${tarefas[i].dataadd.slice(0, 10).split('-').reverse().join('/')}</div>
+                                <div class="nodoTexto">${tarefas[i].categoria}</div>
+                                <div class="nodoTexto">${tarefas[i].datavenc.slice(0, 10).split('-').reverse().join('/')}</div>
+                            </div>
+                        </div>
+                            `;
+                    }
+                }
+            }
+            else if (query === "" || query == null) {
                 conteudo += `
                 <div id="${tarefas[i].id}" class="tarefa">
                     <input class="check" type="checkbox"
@@ -140,6 +179,7 @@ function abrirModalGenerico(id) {
                         </div>
                         <div id="divBotoes">
                             <button id="btnEdit" type="submit" class="btn">Editar</button>
+                            <button class="btn btnArquivar" id="btnArquivar">Arquivar</button>
                             <button class="btn btnFechar" id="btnFechar">Fechar</button>
                         </div>
                     </div>
@@ -154,10 +194,45 @@ function abrirModalGenerico(id) {
     btnEdit.addEventListener("click", () => {
         editarTarefa(btnEdit, id);
     });
+    btnArquivar = document.getElementById("btnArquivar");
+    btnArquivar.addEventListener("click", () => {
+        arquivarTarefa(id);
+    });
     btnFechar = document.getElementById("btnFechar");
     btnFechar.addEventListener("click", () => {
         fecharModal();
     });
+}
+
+function arquivarTarefa(id) {
+    let tarefas = JSON.parse(localStorage.getItem("tarefas"));
+    var novaArquivada = {};
+    for(let i = 0; i < tarefas.length; i++){
+        if(tarefas[i].id == id){
+            var index = tarefas.indexOf(tarefas[i]);
+            tarefas.splice(index, 1);
+            novaArquivada = {
+                idUsuario: tarefas[i].idUsuario,
+                id: tarefas[i].id,
+                checked: tarefas[i].checked,
+                nome: tarefas[i].nome,
+                desc: tarefas[i].desc,
+                categoria: tarefas[i].categoria,
+                dataadd: tarefas[i].dataadd,
+                datavenc: tarefas[i].datavenc
+            }
+        }
+    }
+    localStorage.setItem("tarefas", JSON.stringify(tarefas));
+
+    fecharModal();
+    var arquivadas = [];
+    if (JSON.parse(localStorage.getItem("arquivadas"))) {
+        arquivadas = JSON.parse(localStorage.getItem("arquivadas"));
+    }
+    arquivadas.push(novaArquivada);
+    localStorage.setItem("arquivadas", JSON.stringify(arquivadas));
+    preencherLista();
 }
 
 function editarTarefa(btnEdit, id) {
@@ -279,9 +354,9 @@ function abrirModalFiltros() {
 
     let txtBtnFiltro = document.getElementById("btnFiltros").innerHTML;
 
-    if(txtBtnFiltro !== "Filtros"){
+    if (txtBtnFiltro !== "Filtros") {
         btnsEscolherFiltro.forEach(btn => {
-            if(btn.innerHTML === txtBtnFiltro){
+            if (btn.innerHTML === txtBtnFiltro) {
                 btn.id = "btnSelected";
                 btnsEscolherFiltro.forEach(btn => {
                     if (btn.getAttribute('id') !== "btnSelected") {
@@ -305,6 +380,7 @@ function abrirModalFiltros() {
                     btn.disabled = false;
                 });
                 document.getElementById("btnFiltros").innerHTML = "Filtros";
+                preencherLista();
             }
             else {
                 document.getElementById("btnFiltros").innerHTML = btn.innerHTML;
@@ -314,6 +390,7 @@ function abrirModalFiltros() {
                         btn.disabled = true;
                     }
                 });
+                preencherLista();
             }
         })
     })
