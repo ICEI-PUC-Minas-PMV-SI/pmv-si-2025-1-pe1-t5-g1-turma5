@@ -14,9 +14,9 @@
     <h1>COMMIT+</h1>
     <p>Crie sua conta para começar a usar o Commit+</p>
     <form id="registerForm">
-      <input type="email" placeholder="Email" required />
-      <input type="password" placeholder="Senha" required />
-      <input type="password" placeholder="Confirme sua Senha" required />
+      <input type="email" id="login" placeholder="Email" required />
+      <input type="password" id="senha" placeholder="Senha" required />
+      <input type="password" id="confirmarsenha" placeholder="Confirme sua Senha" required />
       <button type="submit">Registrar</button>
     </form>
     <div class="options">
@@ -28,9 +28,9 @@
     document.getElementById("registerForm").addEventListener("submit", function (e) {
       e.preventDefault();
 
-      const email = document.querySelector("input[placeholder='Email']").value;
-      const senha = document.querySelector("input[placeholder='Senha']").value;
-      const confirmaSenha = document.querySelector("input[placeholder='Confirme sua Senha']").value;
+      const email = document.getElementById("login").value;
+      const senha = document.getElementById("senha").value;
+      const confirmaSenha = document.getElementById("confirmarsenha").value;
 
       if (senha !== confirmaSenha) {
         alert("As senhas não coincidem.");
@@ -41,7 +41,6 @@
       const login = email;
 
       addUser(nome, login, senha, email);
-      alert("Cadastro realizado com sucesso!");
       window.location.href = "login.html";
     });
   </script>

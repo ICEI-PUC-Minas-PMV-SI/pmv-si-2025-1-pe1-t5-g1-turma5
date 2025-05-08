@@ -72,6 +72,8 @@ function addUser(nome, login, senha, email) {
 
   db_usuarios.usuarios.push(novoUsuario);
   localStorage.setItem("db_usuarios", JSON.stringify(db_usuarios));
+  alert("Cadastro realizado com sucesso!");
+  window.location.href = "login.html";
 }
 
 initLoginApp();
