@@ -210,7 +210,6 @@ function arquivarTarefa(id) {
     for(let i = 0; i < tarefas.length; i++){
         if(tarefas[i].id == id){
             var index = tarefas.indexOf(tarefas[i]);
-            tarefas.splice(index, 1);
             novaArquivada = {
                 idUsuario: tarefas[i].idUsuario,
                 id: tarefas[i].id,
@@ -221,6 +220,7 @@ function arquivarTarefa(id) {
                 dataadd: tarefas[i].dataadd,
                 datavenc: tarefas[i].datavenc
             }
+            tarefas.splice(index, 1);
         }
     }
     localStorage.setItem("tarefas", JSON.stringify(tarefas));
