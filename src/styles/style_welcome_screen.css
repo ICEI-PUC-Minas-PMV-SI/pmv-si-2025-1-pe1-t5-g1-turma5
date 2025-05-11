@@ -1,0 +1,213 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Roboto', sans-serif;
+  background-color: #F1F8F4;
+  color: #2E7D32;
+  line-height: 1.6;
+  scroll-behavior: smooth; /* ROLAGEM SUAVE */
+}
+
+/* Container centralizado */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  width: 100%;
+}
+
+/* CABEÇALHO */
+header {
+  background-color: #4CAF50;
+  width: 100%;
+  padding: 1rem 0;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.navbar img {
+  height: 65px;
+  width: auto;
+  display: block;
+}
+
+.navbar ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.navbar ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  padding: 0.5rem;
+  transition: color 0.3s ease;
+}
+
+.navbar ul li a:hover {
+  color: #2E7D32;
+}
+
+.nav-actions a {
+  margin-left: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #2E7D32;
+  color: white;
+  border-radius: 5px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.nav-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+/* IMAGEM E EXPLICAÇÃO */
+#hero {
+  background-color: #C8E6C9;
+  width: 100%;
+  padding: 4rem 0;
+}
+
+.hero-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.hero-content > div {
+  flex: 1 1 45%;
+  min-width: 300px;
+}
+
+#hero h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+#hero p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+#hero a {
+  display: inline-block;
+  background-color: #2E7D32;
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+#hero img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* SEÇÕES LADO A LADO */
+.two-columns {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.two-columns .box {
+  flex: 1 1 45%;
+  min-width: 280px;
+}
+
+/* CENTRALIZAÇÃO CONTATO */
+.center-text {
+  text-align: center;
+}
+
+/* TÍTULOS E LISTAS */
+section h3 {
+  font-size: 1.75rem;
+  margin-bottom: 1rem;
+  color: #2E7D32;
+}
+
+section ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+section ul li {
+  margin-bottom: 0.5rem;
+}
+
+/* RODAPÉ */
+footer {
+  background-color: #2E7D32;
+  color: white;
+  text-align: center;
+  padding: 2rem 1rem;
+  font-size: 0.9rem;
+  width: 100%;
+}
+
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar ul {
+    flex-direction: column;
+    gap: 0.75rem;
+    justify-content: flex-start;
+    align-items: flex-start;
+  }
+
+  .nav-actions {
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-top: 1rem;
+  }
+
+  .hero-content {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-content > div {
+    flex: 1 1 100%;
+  }
+
+  .two-columns {
+    flex-direction: column;
+  }
+
+  .two-columns .box {
+    flex: 1 1 100%;
+  }
+
+  footer {
+    font-size: 0.85rem;
+  }
+}
