@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="EN">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=calendar_month,delete,format_list_bulleted,home_storage,menu" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-    <link rel="stylesheet" href="../styles/styles.css">
-    <link rel="stylesheet" href="../styles/styleListaTarefas.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
     <link rel="icon" type="image/x-icon" href="../../docs/img/Icone.png">
-    <title>Tarefas</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/style-lixeira.css">
+    <title>Lixeira</title>
 </head>
 
 <body>
@@ -21,51 +21,38 @@
         <sidebar id="barraLateral">
             <a href="ListaTarefas.html">
                 <div class="item-barra">
-                    <span class="material-symbols-outlined">
-                        format_list_bulleted
-                    </span> Tarefas
+                    <span class="material-symbols-outlined">format_list_bulleted</span> Tarefas
                 </div>
             </a>
             <a href="calendario.html">
                 <div class="item-barra">
-                    <span class="material-symbols-outlined">
-                        calendar_month
-                    </span> Calendário
+                    <span class="material-symbols-outlined">calendar_month</span> Calendário
                 </div>
             </a>
             <a href="arquivado.html">
                 <div class="item-barra">
-                    <span class="material-symbols-outlined">
-                        home_storage
-                    </span> Arquivadas
+                    <span class="material-symbols-outlined">home_storage</span> Arquivadas
                 </div>
             </a>
             <a href="lixeira.html">
                 <div class="item-barra">
-                    <span class="material-symbols-outlined">
-                        delete
-                    </span> Lixeira
+                    <span class="material-symbols-outlined">delete</span> Lixeira
                 </div>
             </a>
         </sidebar>
         <main id="principal">
-            <div id="barraBotoes">
+            <div id="barra">
                 <div id="barra-1">
-                    <button id="btnAdd" class="btn">Adicionar</button>
-                    <input class="barraInput" id="pesquisa" maxlength="13" placeholder="Buscar">
+                    <button id="btnUnarchive" class="btn">Retornar à tela</button>
                 </div>
-                <button id="btnFiltros" class="btn">Filtros</button>
+                <button id="btnDelete" class="btn">Excluir Permanentemente</button>
             </div>
             <div>
-                <div id="cabecalhoTarefas">
-                    <div class="nodoTexto">Nome</div>
-                    <div class="nodoTexto">Data Add.</div>
-                    <div class="nodoTexto">Categoria</div>
-                    <div class="nodoTexto">Data Venc.</div>
+                <div id="descricao">
+                    <div class="botao">Nome</div>
+                    <div class="botao">Data Exclusão</div>
+                    <div class="botao">Categoria</div>
                 </div>
-                <div id="lista">
-                </div>
-            </div>
         </main>
     </div>
     <footer id="menuInferior">
@@ -76,7 +63,7 @@
         </div>
         <div id="menuEscondido">
             <div>
-                <a href="">
+                <a href="ListaTarefas.html">
                     <div class="item-barra">
                         <span class="material-symbols-outlined">
                             format_list_bulleted
@@ -111,6 +98,5 @@
         </div>
     </footer>
     <script src="../scripts/menuInferior.js"></script>
-    <script src="../scripts/ListaTarefas.js"></script>
 </body>
 </html>

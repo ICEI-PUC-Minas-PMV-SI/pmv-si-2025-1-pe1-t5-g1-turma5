@@ -200,10 +200,6 @@
 }
 
 @media screen and (max-width:1300px) {
-    #menuInferior {
-        display: flex;
-    }
-
     #conteudo {
         grid-template-columns: 1fr;
     }

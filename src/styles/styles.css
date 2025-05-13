@@ -129,4 +129,10 @@ a {
     #barraLateral {
         display: none;
     }
+    #menuInferior {
+        display: flex;
+    }
+    #conteudo {
+        grid-template-columns: 1fr;
+    }
 }

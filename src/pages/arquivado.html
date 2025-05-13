@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-    <link rel="stylesheet" href="../styles/arquivado.css">
-    <link rel="stylesheet" href="../styles/styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="stylesheet" href="../styles/arquivado.css">
     <link rel="icon" type="image/x-icon" href="../../docs/img/Icone.png">
+    <title>Arquivadas</title>
 </head>
     <body>
         <header>
@@ -16,14 +17,35 @@
         </header>
         <div id="conteudo">
             <sidebar id="barraLateral">
-                <a href="ListaTarefas.html">
-                    <div class="item-barra">
-                        <i class="material-symbols-outlined">
-                            home
-                        </i> Menu Inicial
-                    </div>
-                </a>
-            </sidebar>
+            <a href="ListaTarefas.html">
+                <div class="item-barra">
+                    <span class="material-symbols-outlined">
+                        format_list_bulleted
+                    </span> Tarefas
+                </div>
+            </a>
+            <a href="calendario.html">
+                <div class="item-barra">
+                    <span class="material-symbols-outlined">
+                        calendar_month
+                    </span> Calendário
+                </div>
+            </a>
+            <a href="arquivado.html">
+                <div class="item-barra">
+                    <span class="material-symbols-outlined">
+                        home_storage
+                    </span> Arquivadas
+                </div>
+            </a>
+            <a href="lixeira.html">
+                <div class="item-barra">
+                    <span class="material-symbols-outlined">
+                        delete
+                    </span> Lixeira
+                </div>
+            </a>
+        </sidebar>
         <main id="principal">
             <div id="barraBotoes">
                 <div id="barra-1">
@@ -40,5 +62,48 @@
                 </div>
             </main>
         </div>
+        <footer id="menuInferior">
+        <div id="btnMenu">
+            <span id="textoMenu" class="material-symbols-outlined">
+                menu
+            </span>
+        </div>
+        <div id="menuEscondido">
+            <div>
+                <a href="ListaTarefas.html">
+                    <div class="item-barra">
+                        <span class="material-symbols-outlined">
+                            format_list_bulleted
+                        </span> Tarefas
+                    </div>
+                </a>
+                <a href="calendario.html">
+                    <div class="item-barra">
+                        <span class="material-symbols-outlined">
+                            calendar_month
+                        </span> Calendário
+                    </div>
+                </a>
+            </div>
+            <div>
+                <a href="arquivado.html">
+                    <div class="item-barra">
+                        <span class="material-symbols-outlined">
+                            home_storage
+                        </span> Arquivadas
+                    </div>
+                </a>
+                <a href="lixeira.html">
+                    <div class="item-barra">
+                        <span class="material-symbols-outlined">
+                            delete
+                        </span> Lixeira
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </footer>
     </body>
+    <script src="../scripts/menuInferior.js"></script>
 </html>
