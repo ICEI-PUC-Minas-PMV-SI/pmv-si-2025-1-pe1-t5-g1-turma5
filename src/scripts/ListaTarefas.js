@@ -394,7 +394,8 @@ function addTarefa() {
         desc: descModal,
         categoria: selectTipos,
         dataadd: dataAddModal,
-        datavenc: dataVencModal
+        datavenc: dataVencModal,
+        lembrete: true
     }
     if (dataAddModal > dataVencModal) {
         alert("A data de início não pode ser depois da data de término!");
