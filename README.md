@@ -11,7 +11,6 @@ Projeto que se propõe a disponibilizar ao usuário uma ferramenta para listar o
 ## Integrantes
 
 * Antônio Vicente da Cruz
-* Erik Cavalcante Dybwad
 * Guilherme Henrique Santos Arantes 
 * Gustavo Henrique Pontes dos Santos
 * Henrique Augusto Freire de Oliveira
