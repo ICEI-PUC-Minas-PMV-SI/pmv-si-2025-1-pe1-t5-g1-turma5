@@ -33,10 +33,8 @@ As tabelas que se seguem apresentam os requisitos funcionais e não funcionais q
 | RF-005 |	O sistema deverá ter os seguintes menus: Tarefas, Arquivo, Lixeira	| Média |
 | RF-006 |	O sistema deverá ter um sistema de “Lembretes”, que irá avisar o usuário sobre o momento de fazer a tarefa | Baixa |
 | RF-007 |	O sistema deve permitir ao usuário definir a prioridade das tarefas | Média |
-| RF-008 |	O sistema deve permitir ao usuário criar etiquetas para organizar suas tarefas | Baixa |
-| RF-009 |	O sistema deve disponibilizar um calendário para o usuário navegar e adicionar tarefas | Baixa |
-| RF-010 |	O sistema deve disponibilizar filtros para buscar tarefas de diferentes formas |	Alta |
-| RF-011 |	O sistema deverá contar com ordenamento de tarefas | Baixa |
+| RF-008 |	O sistema deve disponibilizar filtros para buscar tarefas de diferentes formas |	Alta |
+| RF-009 |	O sistema deverá contar com ordenamento de tarefas | Baixa |
 
 
 ### Requisitos não Funcionais (RNF)
