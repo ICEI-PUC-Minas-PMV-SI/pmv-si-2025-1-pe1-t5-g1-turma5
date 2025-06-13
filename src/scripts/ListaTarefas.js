@@ -4,6 +4,110 @@ var btnAbrirFiltros = document.getElementById("btnFiltros");
 var btnAdd = document.getElementById("btnAdd");
 var barraInput = document.getElementById("pesquisa");
 
+var botaoSortNome = document.getElementById("sortNome");
+var botaoSortDataAdd = document.getElementById("sortDataAdd");
+var botaoSortCategoria = document.getElementById("sortCategoria");
+var botaoSortDataVenc = document.getElementById("sortDataVenc");
+
+botaoSortNome.addEventListener("click", () => {
+    let query = document.getElementById("pesquisa").value;
+    let setaNome = document.getElementById("setaNome");
+    limparSort("nome");
+    if(!setaNome.classList.contains("btnSeta")){
+        setaNome.classList.add("btnSeta");        
+        setaNome.innerHTML = "↓";
+        preencherLista(query,"nome","down");
+    }
+    else if(setaNome.innerHTML == "↓") {      
+        setaNome.innerHTML = "↑";
+        preencherLista(query,"nome","up");
+    }
+    else {
+        setaNome.innerHTML = "";
+        setaNome.classList.remove("btnSeta");
+        preencherLista(query);
+    }
+})
+
+botaoSortDataAdd.addEventListener("click", () => {
+    let setaDataAdd = document.getElementById("setaDataAdd");
+    let query = document.getElementById("pesquisa").value;
+    limparSort("dataAdd");
+    if(!setaDataAdd.classList.contains("btnSeta")){
+        setaDataAdd.classList.add("btnSeta");        
+        setaDataAdd.innerHTML = "↓";
+        preencherLista(query,"dataAdd","down");
+    }
+    else if(setaDataAdd.innerHTML == "↓") {      
+        setaDataAdd.innerHTML = "↑";
+        preencherLista(query,"dataAdd","up");
+    }
+    else {
+        setaDataAdd.innerHTML = "";
+        setaDataAdd.classList.remove("btnSeta");
+        preencherLista(query);
+    }
+})
+
+botaoSortDataVenc.addEventListener("click", () => {
+    let setaDataAdd = document.getElementById("setaDataVenc");
+    let query = document.getElementById("pesquisa").value;
+    limparSort("dataVenc");
+    if(!setaDataVenc.classList.contains("btnSeta")){
+        setaDataVenc.classList.add("btnSeta");        
+        setaDataVenc.innerHTML = "↓";
+        preencherLista(query,"dataVenc","down");
+    }
+    else if(setaDataVenc.innerHTML == "↓") {      
+        setaDataVenc.innerHTML = "↑";
+        preencherLista(query,"dataVenc","up");
+    }
+    else {
+        setaDataVenc.innerHTML = "";
+        setaDataVenc.classList.remove("btnSeta");
+        preencherLista(query);
+    }
+})
+
+function limparSort(tipo){
+    let setaNome = document.getElementById("setaNome");
+    let setaDataAdd = document.getElementById("setaDataAdd");
+    let setaCategoria = document.getElementById("setaCategoria");
+    let setaDataVenc = document.getElementById("setaDataVenc");
+    if(tipo == "nome") {
+        setaDataAdd.innerHTML = "";
+        setaDataAdd.classList.remove("btnSeta");
+        setaCategoria.innerHTML = "";
+        setaCategoria.classList.remove("btnSeta");
+        setaDataVenc.innerHTML = "";
+        setaDataVenc.classList.remove("btnSeta");
+    }
+    if(tipo == "dataAdd"){
+        setaNome.innerHTML = "";
+        setaNome.classList.remove("btnSeta");
+        setaCategoria.innerHTML = "";
+        setaCategoria.classList.remove("btnSeta");
+        setaDataVenc.innerHTML = "";
+        setaDataVenc.classList.remove("btnSeta");
+    }
+    if(tipo == "dataVenc") {
+        setaNome.innerHTML = "";
+        setaNome.classList.remove("btnSeta");
+        setaDataAdd.innerHTML = "";
+        setaDataAdd.classList.remove("btnSeta");
+        setaCategoria.innerHTML = "";
+        setaCategoria.classList.remove("btnSeta");
+    }
+    if(tipo == "categoria"){
+        setaNome.innerHTML = "";
+        setaNome.classList.remove("btnSeta");
+        setaDataAdd.innerHTML = "";
+        setaDataAdd.classList.remove("btnSeta");
+        setaDataVenc.innerHTML = "";
+        setaDataVenc.classList.remove("btnSeta");
+    }
+}
+
 var tarefas = JSON.parse(localStorage.getItem("tarefas"));
 
 function fecharModal() {
@@ -11,13 +115,87 @@ function fecharModal() {
     modal.remove();
 }
 
-function preencherLista(query) {
+function preencherLista(query, sort, tipo) {
     let filtro = document.getElementById("btnFiltros").innerHTML;
     if (filtro === "Filtros") {
         filtro = null;
     }
     listaHtml.innerHTML = "";
     tarefas = JSON.parse(localStorage.getItem("tarefas"));
+    
+    if(sort == "nome"){ 
+        if(tipo == "down"){
+            tarefas.sort((a, b) => {
+                if (a.nome.toLowerCase() < b.nome.toLowerCase()) {
+                    return -1;
+                }
+                if (a.nome.toLowerCase() > b.nome.toLowerCase()) {
+                    return 1;
+                }
+                return 0;
+            })
+        }
+        else if(tipo == "up"){
+            tarefas.sort((a, b) => {
+                if (a.nome.toLowerCase() > b.nome.toLowerCase()) {
+                    return -1;
+                }
+                if (a.nome.toLowerCase() < b.nome.toLowerCase()) {
+                    return 1;
+                }
+                return 0;
+            })
+        }
+    }
+    if(sort == "dataAdd"){ 
+        if(tipo == "down"){
+            tarefas.sort((a, b) => {
+                if (a.dataadd.toLowerCase() < b.dataadd.toLowerCase()) {
+                    return -1;
+                }
+                if (a.dataadd.toLowerCase() > b.dataadd.toLowerCase()) {
+                    return 1;
+                }
+                return 0;
+            })
+        }
+        else if(tipo == "up"){
+            tarefas.sort((a, b) => {
+                if (a.dataadd.toLowerCase() > b.dataadd.toLowerCase()) {
+                    return -1;
+                }
+                if (a.dataadd.toLowerCase() < b.dataadd.toLowerCase()) {
+                    return 1;
+                }
+                return 0;
+            })
+        }
+    }
+    if(sort == "dataVenc"){ 
+        if(tipo == "down"){
+            tarefas.sort((a, b) => {
+                if (a.datavenc.toLowerCase() < b.datavenc.toLowerCase()) {
+                    return -1;
+                }
+                if (a.datavenc.toLowerCase() > b.datavenc.toLowerCase()) {
+                    return 1;
+                }
+                return 0;
+            })
+        }
+        else if(tipo == "up"){
+            tarefas.sort((a, b) => {
+                if (a.datavenc.toLowerCase() > b.datavenc.toLowerCase()) {
+                    return -1;
+                }
+                if (a.datavenc.toLowerCase() < b.datavenc.toLowerCase()) {
+                    return 1;
+                }
+                return 0;
+            })
+        }
+    }
+    
     if (tarefas) {
         conteudo = "";
         for (let i = 0; i < tarefas.length; i++) {
@@ -422,6 +600,9 @@ function trocarEstado(id) {
     localStorage.setItem("tarefas", JSON.stringify(tarefas));
 }
 
+function sortNome(){
+
+}
 
 // Fonte: https://stackoverflow.com/questions/105034/how-to-create-guid-uuid
 function generateUUID() { // Public Domain/MIT

@@ -76,6 +76,7 @@
     width: 20%;
     margin-left: 5%;
     text-align: center;
+    user-select: none;
 }
 
 .modalCriacao,
@@ -194,6 +195,19 @@
 
 #pesquisa {
     width: 40%;
+}
+
+.btnSeta {
+    background-color: gray;
+    color:white;
+    padding: 1% 4%;
+    border-radius: 10px;
+}
+.txt:hover{
+    cursor:pointer;
+    background-color: rgb(200, 200, 200);
+    border-radius: 10px;
+    padding: 2%;
 }
 
 @media screen and (max-width:1300px) {
