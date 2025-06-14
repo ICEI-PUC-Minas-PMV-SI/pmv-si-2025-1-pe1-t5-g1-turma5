@@ -138,6 +138,61 @@ Esta seção deve apresentar o relatório com as evidências dos testes de softw
 **Resultado obtido** | Sucesso
 |Link do vídeo do teste realizado: | https://drive.google.com/file/d/1ySOQSLDYpxTIH0oLSwZ-x86v61gGxGBc/view?usp=sharing | 
 
+**Caso de Teste** | **Mostrar funcionalidades**
+ :--------------: | ------------
+**Procedimento**  | 1) Esteja presente na página index.html <br> 2) Clique na opção "Funcionalidades" <br> 
+**Requisitos associados** | ---
+**Resultado esperado** | A página faz um scroll até a seção que apresenta as funcionalidades do site.
+**Dados de entrada** | Nenhum
+**Resultado obtido** | Sucesso
+|Link do vídeo do teste realizado: | https://drive.google.com/drive/folders/1mKUoVOKpuZ0YNS9umK3MkwcJOSUxMl4c | 
+
+**Caso de Teste** | **Mostrar planos**
+ :--------------: | ------------
+**Procedimento**  | 1) Esteja presente na página index.html <br> 2) Clique na opção "Planos" <br> 
+**Requisitos associados** | ---
+**Resultado esperado** | A página faz um scroll até a seção que apresenta as funcionalidades do site.
+**Dados de entrada** | Nenhum
+**Resultado obtido** | Sucesso
+|Link do vídeo do teste realizado: | https://drive.google.com/drive/folders/1mKUoVOKpuZ0YNS9umK3MkwcJOSUxMl4c | 
+
+**Caso de Teste** | **Mostrar contato**
+ :--------------: | ------------
+**Procedimento**  | 1) Esteja presente na página index.html <br> 2) Clique na opção "Contato" <br> 
+**Requisitos associados** | ---
+**Resultado esperado** | A página faz um scroll até a seção que apresenta as funcionalidades do site.
+**Dados de entrada** | Nenhum
+**Resultado obtido** | Sucesso
+|Link do vídeo do teste realizado: | https://drive.google.com/drive/folders/1mKUoVOKpuZ0YNS9umK3MkwcJOSUxMl4c | 
+
+**Caso de Teste** | **Comece gratuitamente**
+ :--------------: | ------------
+**Procedimento**  | 1) Esteja presente na página index.html <br> 2) Clique na opção "Comece gratuitamente" <br> 
+**Requisitos associados** | ---
+**Resultado esperado** | Ao clicar no botão, o usuário deve ser levado para a página de cadastro.
+**Dados de entrada** | Nenhum
+**Resultado obtido** | Sucesso
+|Link do vídeo do teste realizado: | https://drive.google.com/drive/folders/1mKUoVOKpuZ0YNS9umK3MkwcJOSUxMl4c | 
+
+**Caso de Teste** | **Cadastre-se**
+ :--------------: | ------------
+**Procedimento**  | 1) Esteja presente na página index.html <br> 2) Clique na opção "Cadastre-se" <br> 
+**Requisitos associados** | ---
+**Resultado esperado** | Ao clicar no botão, o usuário deve ser levado para a página de cadastro.
+**Dados de entrada** | Nenhum
+**Resultado obtido** | Sucesso
+|Link do vídeo do teste realizado: | https://drive.google.com/drive/folders/1mKUoVOKpuZ0YNS9umK3MkwcJOSUxMl4c | 
+
+
+**Caso de Teste** | **Login**
+ :--------------: | ------------
+**Procedimento**  | 1) Esteja presente na página index.html <br> 2) Clique na opção "Login" <br> 
+**Requisitos associados** | ---
+**Resultado esperado** | Ao clicar no botão, o usuário deve ser levado para a página de login.
+**Dados de entrada** | Nenhum
+**Resultado obtido** | Sucesso
+|Link do vídeo do teste realizado: | https://drive.google.com/drive/folders/1mKUoVOKpuZ0YNS9umK3MkwcJOSUxMl4c | 
+
 ## Avaliação dos Testes de Software
 
 Discorra sobre os resultados do teste. Ressaltando pontos fortes e fracos identificados na solução. Comente como o grupo pretende atacar esses pontos nas próximas iterações. Apresente as falhas detectadas e as melhorias geradas a partir dos resultados obtidos nos testes.
