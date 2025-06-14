@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="EN">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined&icon_names=calendar_month,delete,format_list_bulleted,home_storage,menu" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
-    <link rel="icon" type="image/x-icon" href="../../docs/img/Icone.png">
     <link rel="stylesheet" href="../styles/styles.css">
-    <link rel="stylesheet" href="../styles/style-lixeira.css">
-    <title>Lixeira</title>
+    <link rel="stylesheet" href="../styles/styleListaTarefas.css">
+    <link rel="icon" type="image/x-icon" href="../../docs/img/Icone.png">
+    <title>Tarefas</title>
 </head>
 
 <body>
@@ -21,33 +21,44 @@
         <sidebar id="barraLateral">
             <a href="ListaTarefas.html">
                 <div class="item-barra">
-                    <span class="material-symbols-outlined">format_list_bulleted</span> Tarefas
+                    <span class="material-symbols-outlined">
+                        format_list_bulleted
+                    </span> Tarefas
                 </div>
             </a>
             <a href="arquivado.html">
                 <div class="item-barra">
-                    <span class="material-symbols-outlined">home_storage</span> Arquivadas
+                    <span class="material-symbols-outlined">
+                        home_storage
+                    </span> Arquivadas
                 </div>
             </a>
             <a href="lixeira.html">
                 <div class="item-barra">
-                    <span class="material-symbols-outlined">delete</span> Lixeira
+                    <span class="material-symbols-outlined">
+                        delete
+                    </span> Lixeira
                 </div>
             </a>
         </sidebar>
         <main id="principal">
-            <div id="barra">
+            <div id="barraBotoes">
                 <div id="barra-1">
-                    <button id="btnUnarchive" class="btn">Retornar à tela</button>
+                    <input class="barraInput" id="pesquisa" maxlength="13" placeholder="Buscar">
                 </div>
-                <button id="btnDelete" class="btn">Excluir Permanentemente</button>
+                <button id="btnFiltros" class="btn">Filtros</button>
             </div>
             <div>
-                <div id="descricao">
-                    <div class="botao">Nome</div>
-                    <div class="botao">Data Exclusão</div>
-                    <div class="botao">Categoria</div>
+                <div id="cabecalhoTarefas">
+                    <div class="nodoTexto"><span id="sortNome" class="txt">Nome <span id="setaNome"></span></span></div>
+                    <div class="nodoTexto"><span id="sortDataAdd" class="txt">Data Add. <span id="setaDataAdd"></span></span></div>
+                    <div class="nodoTexto"><span id="sortCategoria" class="txt">Categoria</span></div>
+                    <div class="nodoTexto"><span id="sortDataVenc" class="txt">Data Venc. <span id="setaDataVenc"></span></span></div>
+                    <div class="nodoTexto"><span id="sortPrioridade" class="txt">Prioridade <span id="setaPrioridade"></span></span></div>
                 </div>
+                <div id="lista">
+                </div>
+            </div>
         </main>
     </div>
     <footer id="menuInferior">
@@ -86,5 +97,6 @@
         </div>
     </footer>
     <script src="../scripts/menuInferior.js"></script>
+    <script src="../scripts/ListaExcluidas.js"></script>
 </body>
 </html>
