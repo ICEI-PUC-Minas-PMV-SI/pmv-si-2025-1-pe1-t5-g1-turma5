@@ -132,7 +132,7 @@ Esta seção deve apresentar o relatório com as evidências dos testes de softw
 **Caso de Teste** | **Enviar tarefas para lixeira**
  :--------------: | ------------
 **Procedimento**  | 1) Esteja presente na página arquivado.html <br> 2) Clique no título da tarefa <br> 3) Clique em "Excluir"
-**Requisitos associados** | RF-005
+**Requisitos associados** | RF-003
 **Resultado esperado** | A tarefa desaparecerá da lista de arquivadas e aparecerá na lista de excluídas (lixeira)
 **Dados de entrada** | Nenhum
 **Resultado obtido** | Sucesso
