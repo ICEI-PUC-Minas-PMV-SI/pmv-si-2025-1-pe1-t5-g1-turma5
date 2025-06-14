@@ -154,7 +154,22 @@
     border: solid 1px black;
 }
 
+#selectPrioridade {
+    font-family: 'Roboto', serif;
+    font-size: 1.25vw;
+    padding: 12px 16px;
+    margin: 5px;
+    border-radius: 18px;
+    border: solid 1px black;
+}
+
 #divTipo {
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#divPrioridade {
     margin-top: 2%;
     display: flex;
     flex-direction: column;

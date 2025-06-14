@@ -151,6 +151,9 @@ a {
 .btnFechar {
     background-color: red;
 }
+.btnExcluir {
+    background-color: darkred;
+}
 
 @media screen and (max-width:1300px) {
     #barraLateral {

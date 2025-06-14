@@ -128,7 +128,7 @@ function limparSort(tipo){
     }
 }
 
-var tarefas = JSON.parse(localStorage.getItem("tarefas"));
+var tarefas = JSON.parse(localStorage.getItem("arquivadas"));
 
 function fecharModal() {
     let modal = document.getElementById("modal");
@@ -141,7 +141,7 @@ function preencherLista(query, sort, tipo) {
         filtro = null;
     }
     listaHtml.innerHTML = "";
-    tarefas = JSON.parse(localStorage.getItem("tarefas"));
+    tarefas = JSON.parse(localStorage.getItem("arquivadas"));
     
     if(sort == "nome"){ 
         if(tipo == "down"){
@@ -343,12 +343,8 @@ btnAbrirFiltros.addEventListener("click", () => {
     abrirModalFiltros();
 })
 
-btnAdd.addEventListener("click", () => {
-    abrirModalTarefas();
-});
-
 function abrirModalGenerico(id) {
-    let tarefas = JSON.parse(localStorage.getItem("tarefas"));
+    let tarefas = JSON.parse(localStorage.getItem("arquivadas"));
     let modal = ``;
     for (let i = 0; i < tarefas.length; i++) {
         if (tarefas[i].id == id) {
@@ -389,8 +385,8 @@ function abrirModalGenerico(id) {
                             </div>
                         </div>
                         <div id="divBotoes">
-                            <button id="btnEdit" type="submit" class="btn">Editar</button>
-                            <button class="btn btnArquivar" id="btnArquivar">Arquivar</button>
+                            <button class="btn btnArquivar" id="btnArquivar">Desarquivar</button>
+                            <button class="btn btnExcluir" id="btnExcluir">Excluir</button>
                             <button class="btn btnFechar" id="btnFechar">Fechar</button>
                         </div>
                     </div>
@@ -401,13 +397,13 @@ function abrirModalGenerico(id) {
     let header = document.querySelector('header');
     div.innerHTML = modal;
     document.body.insertBefore(div, header);
-    btnEdit = document.getElementById("btnEdit");
-    btnEdit.addEventListener("click", () => {
-        editarTarefa(btnEdit, id);
-    });
     btnArquivar = document.getElementById("btnArquivar");
     btnArquivar.addEventListener("click", () => {
-        arquivarTarefa(id);
+        desarquivarTarefa(id);
+    });
+    btnExcluir = document.getElementById("btnExcluir");
+    btnExcluir.addEventListener("click", () => {
+        excluirTarefa(id);
     });
     btnFechar = document.getElementById("btnFechar");
     btnFechar.addEventListener("click", () => {
@@ -415,85 +411,68 @@ function abrirModalGenerico(id) {
     });
 }
 
-function arquivarTarefa(id) {
-    let tarefas = JSON.parse(localStorage.getItem("tarefas"));
+function desarquivarTarefa(id) {
+    let arquivadas = JSON.parse(localStorage.getItem("arquivadas"));
     var novaArquivada = {};
-    for(let i = 0; i < tarefas.length; i++){
-        if(tarefas[i].id == id){
-            var index = tarefas.indexOf(tarefas[i]);
+    for(let i = 0; i < arquivadas.length; i++){
+        if(arquivadas[i].id == id){
+            var index = arquivadas.indexOf(arquivadas[i]);
             novaArquivada = {
-                idUsuario: tarefas[i].idUsuario,
-                id: tarefas[i].id,
-                checked: tarefas[i].checked,
-                nome: tarefas[i].nome,
-                desc: tarefas[i].desc,
-                categoria: tarefas[i].categoria,
-                prioridade: tarefas[i].prioridade,
-                dataadd: tarefas[i].dataadd,
-                datavenc: tarefas[i].datavenc
+                idUsuario: arquivadas[i].idUsuario,
+                id: arquivadas[i].id,
+                checked: arquivadas[i].checked,
+                nome: arquivadas[i].nome,
+                desc: arquivadas[i].desc,
+                categoria: arquivadas[i].categoria,
+                prioridade: arquivadas[i].prioridade,
+                dataadd: arquivadas[i].dataadd,
+                datavenc: arquivadas[i].datavenc
             }
-            tarefas.splice(index, 1);
+            arquivadas.splice(index, 1);
         }
     }
-    localStorage.setItem("tarefas", JSON.stringify(tarefas));
+    localStorage.setItem("arquivadas", JSON.stringify(arquivadas));
 
     fecharModal();
-    var arquivadas = [];
-    if (JSON.parse(localStorage.getItem("arquivadas"))) {
-        arquivadas = JSON.parse(localStorage.getItem("arquivadas"));
+    var tarefas = [];
+    if (JSON.parse(localStorage.getItem("tarefas"))) {
+        tarefas = JSON.parse(localStorage.getItem("tarefas"));
     }
-    arquivadas.push(novaArquivada);
-    localStorage.setItem("arquivadas", JSON.stringify(arquivadas));
+    tarefas.push(novaArquivada);
+    localStorage.setItem("tarefas", JSON.stringify(tarefas));
     preencherLista();
 }
 
-function editarTarefa(btnEdit, id) {
-    if (document.getElementById("nomeModal").readOnly) {
-        document.getElementById("nomeModal").readOnly = false;
-        document.getElementById("descModal").readOnly = false;
-        document.getElementById("selectTipos").disabled = false;
-        document.getElementById("selectPrioridade").disabled = false;
-        document.getElementById("dataAddModal").disabled = false;
-        document.getElementById("dataVencModal").disabled = false;
-        btnEdit.style.backgroundColor = "#156527";
-        btnEdit.innerHTML = "Confirmar";
-    }
-    else {
-        let nomeModal = document.getElementById("nomeModal").value;
-        let descModal = document.getElementById("descModal").value;
-        let selectTipos = document.getElementById("selectTipos").value;
-        let prioridade = document.getElementById("selectPrioridade").value;
-        let dataAddModal = document.getElementById("dataAddModal").value;
-        let dataVencModal = document.getElementById("dataVencModal").value;
-
-        if (dataAddModal > dataVencModal) {
-            alert("A data de início não pode ser depois da data de término!");
-        }
-        else {
-            document.getElementById("nomeModal").readOnly = true;
-            document.getElementById("descModal").readOnly = true;
-            document.getElementById("selectTipos").disabled = true;
-            document.getElementById("selectPrioridade").disabled = true;
-            document.getElementById("dataAddModal").disabled = true;
-            document.getElementById("dataVencModal").disabled = true;
-            btnEdit.style.backgroundColor = "#227852";
-            btnEdit.innerHTML = "Editar";
-            let tarefas = JSON.parse(localStorage.getItem("tarefas"));
-            for (let i = 0; i < tarefas.length; i++) {
-                if (tarefas[i].id == id) {
-                    tarefas[i].nome = nomeModal;
-                    tarefas[i].desc = descModal;
-                    if (selectTipos !== null && selectTipos !== "") {
-                        tarefas[i].categoria = selectTipos;
-                    }
-                    tarefas[i].dataadd = dataAddModal;
-                    tarefas[i].datavenc = dataVencModal;
-                    localStorage.setItem("tarefas", JSON.stringify(tarefas));
-                    preencherLista();
-                }
+function excluirTarefa(id) {
+    let arquivadas = JSON.parse(localStorage.getItem("arquivadas"));
+    var novaExcluida = {};
+    for(let i = 0; i < arquivadas.length; i++){
+        if(arquivadas[i].id == id){
+            var index = arquivadas.indexOf(arquivadas[i]);
+            novaExcluida = {
+                idUsuario: arquivadas[i].idUsuario,
+                id: arquivadas[i].id,
+                checked: arquivadas[i].checked,
+                nome: arquivadas[i].nome,
+                desc: arquivadas[i].desc,
+                categoria: arquivadas[i].categoria,
+                prioridade: arquivadas[i].prioridade,
+                dataadd: arquivadas[i].dataadd,
+                datavenc: arquivadas[i].datavenc
             }
+            arquivadas.splice(index, 1);
         }
     }
+    localStorage.setItem("arquivadas", JSON.stringify(arquivadas));
+
+    fecharModal();
+    var excluidas = [];
+    if (JSON.parse(localStorage.getItem("excluidas"))) {
+        excluidas = JSON.parse(localStorage.getItem("excluidas"));
+    }
+    excluidas.push(novaExcluida);
+    localStorage.setItem("excluidas", JSON.stringify(excluidas));
+    preencherLista();
 }
 
 function abrirModalTarefas() {
@@ -646,23 +625,23 @@ function addTarefa() {
     else {
         fecharModal();
         var tarefas = [];
-        if (JSON.parse(localStorage.getItem("tarefas"))) {
-            tarefas = JSON.parse(localStorage.getItem("tarefas"));
+        if (JSON.parse(localStorage.getItem("arquivadas"))) {
+            tarefas = JSON.parse(localStorage.getItem("arquivadas"));
         }
         tarefas.push(novaTarefa);
-        localStorage.setItem("tarefas", JSON.stringify(tarefas));
+        localStorage.setItem("arquivadas", JSON.stringify(tarefas));
         preencherLista();
     }
 }
 
 function trocarEstado(id) {
-    let tarefas = JSON.parse(localStorage.getItem("tarefas"));
+    let tarefas = JSON.parse(localStorage.getItem("arquivadas"));
     for (let i = 0; i < tarefas.length; i++) {
         if (tarefas[i].id == id) {
             tarefas[i].checked = !tarefas[i].checked;
         }
     }
-    localStorage.setItem("tarefas", JSON.stringify(tarefas));
+    localStorage.setItem("arquivadas", JSON.stringify(tarefas));
 }
 
 function sortNome(){
