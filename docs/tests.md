@@ -193,6 +193,26 @@ Esta seção deve apresentar o relatório com as evidências dos testes de softw
 **Resultado obtido** | Sucesso
 |Link do vídeo do teste realizado: | https://drive.google.com/drive/folders/1mKUoVOKpuZ0YNS9umK3MkwcJOSUxMl4c | 
 
+
+**Caso de Teste** | **Restaurando Tarefa da Lixeira**
+ :--------------: | ------------
+**Procedimento**  | 1) Esteja presente na página lixeira.html ou propriamente a tela de lixeira <br> 2) Clique na tarefa <br> 3) Clique no botão "Restaurar"
+**Requisitos associados** | RF-003
+**Resultado esperado** | Ao clicar no botão de restaurar, a respectiva tarefa deve retornar à tela de lista de tarefas
+**Dados de entrada** | Nenhum
+**Resultado obtido** | Sucesso
+|Link do vídeo do teste realizado: | https://drive.google.com/file/d/1myOO-hz0yOPYY1F66fyek3N0Lp8VajoL/view?usp=drive_link | 
+
+
+**Caso de Teste** | **Excluindo Definitivamente Uma Tarefa da Lixeira**
+ :--------------: | ------------
+**Procedimento**  | 1) Esteja presente na página lixeira.html ou propriamente a tela de lixeira <br> 2) Clique na tarefa <br> 3) Clique no botão "Excluir" 4) Veja que a tarefa sumiu da tela
+**Requisitos associados** | RF-003
+**Resultado esperado** | Ao clicar no botão de excluir, a respectiva tarefa é excluída permanentemente da tela de tarefas da lixeira
+**Dados de entrada** | Nenhum
+**Resultado obtido** | Sucesso
+|Link do vídeo do teste realizado: | https://drive.google.com/file/d/1AIxIcCHobbEeOYxLR99H77mCoxIiDGn9/view?usp=drive_link | 
+
 ## Avaliação dos Testes de Software
 
 Discorra sobre os resultados do teste. Ressaltando pontos fortes e fracos identificados na solução. Comente como o grupo pretende atacar esses pontos nas próximas iterações. Apresente as falhas detectadas e as melhorias geradas a partir dos resultados obtidos nos testes.
