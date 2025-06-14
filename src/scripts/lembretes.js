@@ -1,5 +1,9 @@
+var usuarioCorrente = JSON.parse(sessionStorage.getItem("usuarioCorrente"));
+if(usuarioCorrente != null) {
+    idUsuario = usuarioCorrente.id; 
+}
 var hoje =  new Date();
-var tarefas = JSON.parse(localStorage.getItem("tarefas"));
+var tarefas = usuarioCorrente.tarefas;
 
 tarefas.forEach(tarefa => {
     dataVencimento = new Date(tarefa.datavenc);
@@ -28,4 +32,4 @@ tarefas.forEach(tarefa => {
     } 
 });
 
-localStorage.setItem("tarefas", JSON.stringify(tarefas));
+sessionStorage.setItem("usuarioCorrente", JSON.stringify(usuarioCorrente));

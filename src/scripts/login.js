@@ -67,7 +67,10 @@ function addUser(nome, login, senha, email) {
     nome,
     login,
     senha,
-    email
+    email,
+    tarefas: [],
+    arquivadas: [],
+    excluidas: []
   };
 
   db_usuarios.usuarios.push(novoUsuario);

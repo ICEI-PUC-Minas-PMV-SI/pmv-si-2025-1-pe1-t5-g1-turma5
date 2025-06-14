@@ -1,3 +1,8 @@
+var usuarioCorrente = JSON.parse(sessionStorage.getItem("usuarioCorrente"));
+if(usuarioCorrente != null) {
+    idUsuario = usuarioCorrente.id; 
+}
+
 var listaHtml = document.getElementById("lista");
 var inputs = document.querySelectorAll("input[type='checkbox']");
 var btnAbrirFiltros = document.getElementById("btnFiltros");
@@ -128,7 +133,7 @@ function limparSort(tipo){
     }
 }
 
-var tarefas = JSON.parse(localStorage.getItem("arquivadas"));
+var tarefas = usuarioCorrente.excluidas;
 
 function fecharModal() {
     let modal = document.getElementById("modal");
@@ -141,7 +146,7 @@ function preencherLista(query, sort, tipo) {
         filtro = null;
     }
     listaHtml.innerHTML = "";
-    tarefas = JSON.parse(localStorage.getItem("excluidas"));
+    tarefas = usuarioCorrente.excluidas;
     
     if(sort == "nome"){ 
         if(tipo == "down"){
@@ -344,7 +349,7 @@ btnAbrirFiltros.addEventListener("click", () => {
 })
 
 function abrirModalGenerico(id) {
-    let tarefas = JSON.parse(localStorage.getItem("excluidas"));
+    let tarefas = usuarioCorrente.excluidas;
     let modal = ``;
     for (let i = 0; i < tarefas.length; i++) {
         if (tarefas[i].id == id) {
@@ -399,7 +404,7 @@ function abrirModalGenerico(id) {
     document.body.insertBefore(div, header);
     btnArquivar = document.getElementById("btnArquivar");
     btnArquivar.addEventListener("click", () => {
-        desarquivarTarefa(id);
+        restaurarTarefa(id);
     });
     btnExcluir = document.getElementById("btnExcluir");
     btnExcluir.addEventListener("click", () => {
@@ -411,8 +416,8 @@ function abrirModalGenerico(id) {
     });
 }
 
-function desarquivarTarefa(id) {
-    let excluidas = JSON.parse(localStorage.getItem("excluidas"));
+function restaurarTarefa(id) {
+    let excluidas = usuarioCorrente.excluidas;
     var novaArquivada = {};
     for(let i = 0; i < excluidas.length; i++){
         if(excluidas[i].id == id){
@@ -431,27 +436,24 @@ function desarquivarTarefa(id) {
             excluidas.splice(index, 1);
         }
     }
-    localStorage.setItem("excluidas", JSON.stringify(excluidas));
-
     fecharModal();
-    var tarefas = [];
-    if (JSON.parse(localStorage.getItem("tarefas"))) {
-        tarefas = JSON.parse(localStorage.getItem("tarefas"));
-    }
+    tarefas = usuarioCorrente.tarefas;
     tarefas.push(novaArquivada);
-    localStorage.setItem("tarefas", JSON.stringify(tarefas));
+    sessionStorage.setItem("usuarioCorrente", JSON.stringify(usuarioCorrente));
+    atualizaDb();
     preencherLista();
 }
 
 function excluirTarefa(id) {
-    let excluidas = JSON.parse(localStorage.getItem("excluidas"));
+    let excluidas = usuarioCorrente.excluidas;
     for(let i = 0; i < excluidas.length; i++){
         if(excluidas[i].id == id){
             var index = excluidas.indexOf(excluidas[i]);
             excluidas.splice(index, 1);
         }
     }
-    localStorage.setItem("excluidas", JSON.stringify(excluidas));
+    sessionStorage.setItem("usuarioCorrente", JSON.stringify(usuarioCorrente));
+    atualizaDb();
     fecharModal();
     preencherLista();
 }
@@ -580,53 +582,27 @@ function abrirModalFiltros() {
     })
 }
 
-function addTarefa() {
-    let nomeModal = document.getElementById("nomeModal").value;
-    let descModal = document.getElementById("descModal").value;
-    let selectTipos = document.getElementById("selectTipos").value;
-    let prioridade = document.getElementById("selectPrioridade").value;
-    let dataAddModal = document.getElementById("dataAddModal").value;
-    let dataVencModal = document.getElementById("dataVencModal").value;
-
-    const novaTarefa = {
-        idUsuario: 0,
-        id: generateUUID(),
-        checked: false,
-        nome: nomeModal,
-        desc: descModal,
-        categoria: selectTipos,
-        prioridade: prioridade,
-        dataadd: dataAddModal,
-        datavenc: dataVencModal,
-        lembrete: true
-    }
-    if (dataAddModal > dataVencModal) {
-        alert("A data de início não pode ser depois da data de término!");
-    }
-    else {
-        fecharModal();
-        var tarefas = [];
-        if (JSON.parse(localStorage.getItem("arquivadas"))) {
-            tarefas = JSON.parse(localStorage.getItem("arquivadas"));
-        }
-        tarefas.push(novaTarefa);
-        localStorage.setItem("arquivadas", JSON.stringify(tarefas));
-        preencherLista();
-    }
-}
-
 function trocarEstado(id) {
-    let tarefas = JSON.parse(localStorage.getItem("arquivadas"));
+    let tarefas = usuarioCorrente.excluidas;
     for (let i = 0; i < tarefas.length; i++) {
         if (tarefas[i].id == id) {
             tarefas[i].checked = !tarefas[i].checked;
         }
     }
-    localStorage.setItem("arquivadas", JSON.stringify(tarefas));
+    sessionStorage.setItem("usuarioCorrente", JSON.stringify(usuarioCorrente));
+    atualizaDb();
 }
 
-function sortNome(){
-
+function atualizaDb(){
+    let usuario = JSON.parse(sessionStorage.getItem("usuarioCorrente"));
+    let db = JSON.parse(localStorage.getItem("db_usuarios"));
+    let id = usuario.id;
+    for(let i = 0; i < db.usuarios.length; i++){
+        if(id === db.usuarios[i].id){
+            db.usuarios[i] = usuario;
+        }
+    }
+    localStorage.setItem("db_usuarios", JSON.stringify(db));
 }
 
 // Fonte: https://stackoverflow.com/questions/105034/how-to-create-guid-uuid

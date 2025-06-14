@@ -1,3 +1,8 @@
+var usuarioCorrente = JSON.parse(sessionStorage.getItem("usuarioCorrente"));
+if(usuarioCorrente != null) {
+    idUsuario = usuarioCorrente.id; 
+}
+
 var listaHtml = document.getElementById("lista");
 var inputs = document.querySelectorAll("input[type='checkbox']");
 var btnAbrirFiltros = document.getElementById("btnFiltros");
@@ -128,7 +133,7 @@ function limparSort(tipo){
     }
 }
 
-var tarefas = JSON.parse(localStorage.getItem("tarefas"));
+var tarefas = usuarioCorrente.tarefas;
 
 function fecharModal() {
     let modal = document.getElementById("modal");
@@ -141,7 +146,7 @@ function preencherLista(query, sort, tipo) {
         filtro = null;
     }
     listaHtml.innerHTML = "";
-    tarefas = JSON.parse(localStorage.getItem("tarefas"));
+    tarefas = usuarioCorrente.tarefas;
     
     if(sort == "nome"){ 
         if(tipo == "down"){
@@ -348,7 +353,7 @@ btnAdd.addEventListener("click", () => {
 });
 
 function abrirModalGenerico(id) {
-    let tarefas = JSON.parse(localStorage.getItem("tarefas"));
+    let tarefas =  usuarioCorrente.tarefas;
     let modal = ``;
     for (let i = 0; i < tarefas.length; i++) {
         if (tarefas[i].id == id) {
@@ -372,7 +377,7 @@ function abrirModalGenerico(id) {
                         <div id="divPrioridade">
                             <label>Prioridade</label>
                             <select disabled id="selectPrioridade">
-                                <option value="" disabled selected>Selecione</option>
+                                <option value="" disabled selected>${tarefas[i].prioridade}</option>
                                 <option>Alta</option>
                                 <option>Média</option>
                                 <option>Baixa</option>
@@ -416,7 +421,7 @@ function abrirModalGenerico(id) {
 }
 
 function arquivarTarefa(id) {
-    let tarefas = JSON.parse(localStorage.getItem("tarefas"));
+    let tarefas = usuarioCorrente.tarefas;
     var novaArquivada = {};
     for(let i = 0; i < tarefas.length; i++){
         if(tarefas[i].id == id){
@@ -435,15 +440,11 @@ function arquivarTarefa(id) {
             tarefas.splice(index, 1);
         }
     }
-    localStorage.setItem("tarefas", JSON.stringify(tarefas));
-
     fecharModal();
-    var arquivadas = [];
-    if (JSON.parse(localStorage.getItem("arquivadas"))) {
-        arquivadas = JSON.parse(localStorage.getItem("arquivadas"));
-    }
+    arquivadas = usuarioCorrente.arquivadas;
     arquivadas.push(novaArquivada);
-    localStorage.setItem("arquivadas", JSON.stringify(arquivadas));
+    sessionStorage.setItem("usuarioCorrente", JSON.stringify(usuarioCorrente));
+    atualizaDb();
     preencherLista();
 }
 
@@ -478,7 +479,7 @@ function editarTarefa(btnEdit, id) {
             document.getElementById("dataVencModal").disabled = true;
             btnEdit.style.backgroundColor = "#227852";
             btnEdit.innerHTML = "Editar";
-            let tarefas = JSON.parse(localStorage.getItem("tarefas"));
+            let tarefas = usuarioCorrente.tarefas;
             for (let i = 0; i < tarefas.length; i++) {
                 if (tarefas[i].id == id) {
                     tarefas[i].nome = nomeModal;
@@ -486,9 +487,13 @@ function editarTarefa(btnEdit, id) {
                     if (selectTipos !== null && selectTipos !== "") {
                         tarefas[i].categoria = selectTipos;
                     }
+                    if (prioridade !== null && prioridade !== "") {
+                        tarefas[i].prioridade = prioridade;
+                    }
                     tarefas[i].dataadd = dataAddModal;
                     tarefas[i].datavenc = dataVencModal;
-                    localStorage.setItem("tarefas", JSON.stringify(tarefas));
+                    sessionStorage.setItem("usuarioCorrente", JSON.stringify(usuarioCorrente));
+                    atualizaDb();
                     preencherLista();
                 }
             }
@@ -629,7 +634,7 @@ function addTarefa() {
     let dataVencModal = document.getElementById("dataVencModal").value;
 
     const novaTarefa = {
-        idUsuario: 0,
+        idUsuario: usuarioCorrente.id,
         id: generateUUID(),
         checked: false,
         nome: nomeModal,
@@ -645,28 +650,39 @@ function addTarefa() {
     }
     else {
         fecharModal();
-        var tarefas = [];
-        if (JSON.parse(localStorage.getItem("tarefas"))) {
-            tarefas = JSON.parse(localStorage.getItem("tarefas"));
+        if(usuarioCorrente.tarefas.length == 0){
+            usuarioCorrente.tarefas = [novaTarefa];
         }
-        tarefas.push(novaTarefa);
-        localStorage.setItem("tarefas", JSON.stringify(tarefas));
+        else {
+            usuarioCorrente.tarefas.push(novaTarefa);
+        }
+        sessionStorage.setItem("usuarioCorrente", JSON.stringify(usuarioCorrente));
+        atualizaDb();
         preencherLista();
     }
 }
 
 function trocarEstado(id) {
-    let tarefas = JSON.parse(localStorage.getItem("tarefas"));
+    let tarefas = usuarioCorrente.tarefas;
     for (let i = 0; i < tarefas.length; i++) {
         if (tarefas[i].id == id) {
             tarefas[i].checked = !tarefas[i].checked;
         }
     }
-    localStorage.setItem("tarefas", JSON.stringify(tarefas));
+    sessionStorage.setItem("usuarioCorrente", JSON.stringify(usuarioCorrente));
+    atualizaDb();
 }
 
-function sortNome(){
-
+function atualizaDb(){
+    let usuario = JSON.parse(sessionStorage.getItem("usuarioCorrente"));
+    let db = JSON.parse(localStorage.getItem("db_usuarios"));
+    let id = usuario.id;
+    for(let i = 0; i < db.usuarios.length; i++){
+        if(id === db.usuarios[i].id){
+            db.usuarios[i] = usuario;
+        }
+    }
+    localStorage.setItem("db_usuarios", JSON.stringify(db));
 }
 
 // Fonte: https://stackoverflow.com/questions/105034/how-to-create-guid-uuid
