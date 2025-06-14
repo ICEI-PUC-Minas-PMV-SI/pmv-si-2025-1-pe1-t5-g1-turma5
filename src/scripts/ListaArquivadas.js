@@ -373,7 +373,7 @@ function abrirModalGenerico(id) {
                         <div id="divPrioridade">
                             <label>Prioridade</label>
                             <select disabled id="selectPrioridade">
-                                <option value="" disabled selected>Selecione</option>
+                                <option value="" disabled selected>${tarefas[i].prioridade}</option>
                                 <option>Alta</option>
                                 <option>Média</option>
                                 <option>Baixa</option>
