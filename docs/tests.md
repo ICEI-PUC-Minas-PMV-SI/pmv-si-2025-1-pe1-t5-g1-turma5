@@ -45,16 +45,98 @@ Preencha a tabela com o plano dos testes. Para cada Caso de Teste (CT), associe 
 
 Esta seção deve apresentar o relatório com as evidências dos testes de software realizados no sistema pela equipe, baseado no plano de testes pré-definido. Documente cada caso de teste apresentando um vídeo ou animação que comprove o funcionamento da funcionalidade. Veja os exemplos a seguir.
 
-|*Caso de Teste*                                 |*CT01 - Criar conta parte 1*                                         |
-|---|---|
-|Requisito Associado | RF-001 - A aplicação deve permitir que os usuários criem uma conta e gerenciem seu cadastro|
-|Link do vídeo do teste realizado: | https://1drv.ms/u/s!AhD2JqpOUvJChapRtRSQ9vPzbNLwGA?e=mxZs6t| 
 
-|*Caso de Teste*                                 |*CT02 - Criar conta parte 2*                                        |
-|---|---|
-|Requisito Associado | RF-001 - A aplicação deve permitir que os usuários criem uma conta e gerenciem seu cadastro|
-|Link do vídeo do teste realizado: | https://1drv.ms/v/s!AhD2JqpOUvJChapQ8CPXL-TI_A7iVg?e=spD3Ar | 
+**Caso de Teste** | **Adicionar nova tarefa**
+ :--------------: | ------------
+**Procedimento**  | 1) Esteja presente na página ListaTarefas.html <br> 2) Clique no botão "Adicionar" <br> 3) Preencha todos os campos do formulário <br> 4) Clique em "Adicionar"
+**Requisitos associados** | RF-001
+**Resultado esperado** | Tarefa adicionada à lista
+**Dados de entrada** | Inserção de dados sobre a tarefa
+**Resultado obtido** | Sucesso
+|Link do vídeo do teste realizado: | https://drive.google.com/file/d/1YTCFkv3jlrJdIl1sjXsFXT9_GUmXQ2mg/view?usp=sharing | 
 
+
+**Caso de Teste** | **Pesquisar tarefa**
+ :--------------: | ------------
+**Procedimento**  | 1) Esteja presente na página ListaTarefas.html, arquivado.html ou lixeira.html <br> 2) Clique na barra "Buscar" <br> 3) Digite o nome ou a descrição da tarefa que deseja pesquisar
+**Requisitos associados** | RF-001
+**Resultado esperado** | Apenas tarefas com título ou descrição equivalente ao conteúdo da pesquisa serão mostradas na tela 
+**Dados de entrada** | Texto na barra de pesquisa
+**Resultado obtido** | Sucesso
+|Link do vídeo do teste realizado: | https://drive.google.com/file/d/1ShUX2t1SK4oYnz7cDg_q7N54kwYmLDLs/view?usp=sharing | 
+
+**Caso de Teste** | **Arquivar tarefa**
+ :--------------: | ------------
+**Procedimento**  | 1) Esteja presente na página ListaTarefas.html <br> 2) Clique no título da tarefa <br> 3) Clique em "Arquivar"
+**Requisitos associados** | RF-003
+**Resultado esperado** | A tarefa desaparecerá da lista de tarefas e estará presente na lista de arquivadas.
+**Dados de entrada** | Nenhum
+**Resultado obtido** | Sucesso
+|Link do vídeo do teste realizado: | https://drive.google.com/file/d/1aLMybVZ5z3sOA_7Ud0Y6g9reUxMki1ej/view?usp=sharing | 
+
+**Caso de Teste** | **Desarquivar tarefa**
+ :--------------: | ------------
+**Procedimento**  | 1) Esteja presente na página arquivado.html <br> 2) Clique no título da tarefa <br> 3) Clique em "Desarquivar"
+**Requisitos associados** | RF-003
+**Resultado esperado** | A tarefa desaparecerá da lista de arquivadas e estará presente na lista de tarefas.
+**Dados de entrada** | Nenhum
+**Resultado obtido** | Sucesso
+|Link do vídeo do teste realizado: | https://drive.google.com/file/d/1uPKJtuXM98Ch2GqT4CHvuCuJGg3gFJeJ/view?usp=sharing | 
+
+**Caso de Teste** | **Editar tarefa**
+ :--------------: | ------------
+**Procedimento**  | 1) Esteja presente na página ListaTarefas.html <br> 2) Clique no título da tarefa <br> 3) Clique em "Editar" <br> 4) Altere os campos que desejar <br> 5) Clique em confirmar
+**Requisitos associados** | RF-003
+**Resultado esperado** | Apenas tarefas com título ou descrição equivalente ao conteúdo da pesquisa serão mostradas na tela 
+**Dados de entrada** | Inserção de novos dados nos campos da tarefa
+**Resultado obtido** | Sucesso
+|Link do vídeo do teste realizado: | https://drive.google.com/file/d/1lZI62PyWmAlN674TRrlFaSLHHsPPHeQf/view?usp=sharing | 
+
+**Caso de Teste** | **Filtrar tarefas**
+ :--------------: | ------------
+**Procedimento**  | 1) Esteja presente na página ListaTarefas.html, arquivado.html ou lixeira.html <br> 2) Clique no botão "Filtros" <br> 3) Clique no filtro que deseja <br> 4) Clique em "Fechar"
+**Requisitos associados** | RF-008
+**Resultado esperado** | Apenas tarefas com filtro equivalente ao selecionado serão mostradas na tela 
+**Dados de entrada** | Filtro selecionado
+**Resultado obtido** | Sucesso
+|Link do vídeo do teste realizado: | https://drive.google.com/file/d/1QIvSPBZPm9nuTiL896Ts_1AqxAWbxIOj/view?usp=sharing | 
+
+
+**Caso de Teste** | **Marcar e desmarcar como Concluida**
+ :--------------: | ------------
+**Procedimento**  | 1) Esteja presente na página ListaTarefas.html, arquivado.html ou lixeira.html <br> 2) Na presença de uma tarefa, clique no círculo verde à esquerda do título da tarefa
+**Requisitos associados** | RF-004
+**Resultado esperado** | Se a tarefa estava marcada como "Concluida" (Circulo preenchido), vai ser marcada como "Pendente" (Círculo não preenchido) e vice-versa.
+**Dados de entrada** | Nenhum
+**Resultado obtido** | Sucesso
+|Link do vídeo do teste realizado: | https://drive.google.com/file/d/1xM9d60oT-xxZQ5ptpuRw58j0TCi_jZvW/view?usp=sharing | 
+
+**Caso de Teste** | **Ordenar tarefas**
+ :--------------: | ------------
+**Procedimento**  | 1) Esteja presente na página ListaTarefas.html, arquivado.html ou lixeira.html <br> 2) Clique nos itens de cabeçalho "Nome", "Data Add", "Data Venc" ou "Prioridade"
+**Requisitos associados** | RF-009
+**Resultado esperado** | A cada clique, as tarefas serão ordenadas de forma crescente ou decrescente de acordo com o item selecionado.
+**Dados de entrada** | Nenhum
+**Resultado obtido** | Sucesso
+|Link do vídeo do teste realizado: | https://drive.google.com/file/d/1kR4v1WKf8aqo0SMS8WOc2TwdxzNiabRa/view?usp=sharing | 
+
+**Caso de Teste** | **Lembrete**
+ :--------------: | ------------
+**Procedimento**  | 1) Esteja presente na página ListaTarefas.html
+**Requisitos associados** | RF-006
+**Resultado esperado** | Caso haja alguma tarefa que vence hoje, será alertado na tela.
+**Dados de entrada** | Nenhum
+**Resultado obtido** | Sucesso
+|Link do vídeo do teste realizado: | https://drive.google.com/file/d/1yAZfZuQfrT2YTvJIqf7Ce-STGVB3Igph/view?usp=sharing | 
+
+**Caso de Teste** | **Enviar tarefas para lixeira**
+ :--------------: | ------------
+**Procedimento**  | 1) Esteja presente na página arquivado.html <br> 2) Clique no título da tarefa <br> 3) Clique em "Excluir"
+**Requisitos associados** | RF-005
+**Resultado esperado** | A tarefa desaparecerá da lista de arquivadas e aparecerá na lista de excluídas (lixeira)
+**Dados de entrada** | Nenhum
+**Resultado obtido** | Sucesso
+|Link do vídeo do teste realizado: | https://drive.google.com/file/d/1ySOQSLDYpxTIH0oLSwZ-x86v61gGxGBc/view?usp=sharing | 
 
 ## Avaliação dos Testes de Software
 
